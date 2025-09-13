@@ -11,13 +11,10 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page") || "1");
 
-  console.log(searchParams.toString());
-
   const allPages = generatePagination(currentPage, totalPages);
 
   const createPageURL = (page: string | number) => {
     const params = new URLSearchParams(searchParams);
-    console.log(params.toString());
     params.set("page", page.toString());
     return `${pathname}?${params.toString()}`;
   };
